@@ -9,6 +9,7 @@ const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const footer = document.querySelector("main footer")
 const description = document.getElementById("description")
+const result = document.getElementById("result")
 
 // Listen for input event on amount input to receive only numbers
 amount.addEventListener("input", () => {
@@ -42,6 +43,10 @@ function convertCurrency(amount, price, symbol) {
   try {
     // Show currency selected
     description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
+    // Calculate total
+    let total = String(amount * price).replace(".", ",")
+    // Show result
+    result.textContent = `${total} Reais`
 
     // Apply conversion
     footer.classList.add("show-result")
@@ -52,7 +57,7 @@ function convertCurrency(amount, price, symbol) {
     alert("Currency not available now, try later")
   }
 }
-
+// Function to format currency to BRL
 function formatCurrencyBRL(value) {
   return Number(value).toLocaleString("pt-BR", {
     style: "currency",

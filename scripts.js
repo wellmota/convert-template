@@ -1,3 +1,8 @@
+// Daily currency exchange rates
+const USD = 4.87
+const EUR = 5.32
+const GBP = 6.08
+
 // Get form elements
 const form = document.querySelector("form")
 const amount = document.getElementById("amount")
@@ -16,7 +21,23 @@ amount.addEventListener("input", () => {
 // Listen for submit event on form
 form.onsubmit = (event) => {
   event.preventDefault()
+  switch(currency.value){
 
-  // Get form data
-  console.log(currency.value)
+    case "USD":
+      convertCurrency(amount.value, USD, "US$")
+      break
+    case "EUR":
+      convertCurrency(amount.value, EUR, "€")
+      break
+    case "GBP":
+      convertCurrency(amount.value, GBP, "£")
+      break
+
+  }
+}
+
+// Function to convert currency
+
+function convertCurrency(amount,currency,symbol){
+  
 }
